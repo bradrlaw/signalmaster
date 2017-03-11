@@ -7,6 +7,9 @@ module.exports = function (server, config) {
     var io = socketIO.listen(server);
 
     io.sockets.on('connection', function (client) {
+        console.log("new connection")
+        console.log(JSON.stringify(client));
+
         client.resources = {
             screen: false,
             video: true,
@@ -15,6 +18,9 @@ module.exports = function (server, config) {
 
         // pass a message to another id
         client.on('message', function (details) {
+            console.log("new message");
+            console.log(JSON.stringify(details));
+
             if (!details) return;
 
             var otherClient = io.to(details.to);
@@ -25,10 +31,12 @@ module.exports = function (server, config) {
         });
 
         client.on('shareScreen', function () {
+            console.log("shareScreen");
             client.resources.screen = true;
         });
 
         client.on('unshareScreen', function (type) {
+            console.log("unshareScreen");
             client.resources.screen = false;
             removeFeed('screen');
         });
@@ -36,6 +44,7 @@ module.exports = function (server, config) {
         client.on('join', join);
 
         function removeFeed(type) {
+            console.log("removeFeed");
             if (client.room) {
                 io.sockets.in(client.room).emit('remove', {
                     id: client.id,
@@ -49,6 +58,8 @@ module.exports = function (server, config) {
         }
 
         function join(name, cb) {
+            console.log("join " + name);
+            
             // sanity check
             if (typeof name !== 'string') return;
             // check if maximum number of clients reached
@@ -67,13 +78,16 @@ module.exports = function (server, config) {
         // we don't want to pass "leave" directly because the
         // event type string of "socket end" gets passed too.
         client.on('disconnect', function () {
+            console.log("disconnect");
             removeFeed();
         });
         client.on('leave', function () {
+            console.log("leave");
             removeFeed();
         });
 
         client.on('create', function (name, cb) {
+            console.log("create " + name);
             if (arguments.length == 2) {
                 cb = (typeof cb == 'function') ? cb : function () {};
                 name = name || uuid();
