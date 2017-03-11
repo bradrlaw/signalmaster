@@ -1,6 +1,7 @@
 var socketIO = require('socket.io'),
     uuid = require('node-uuid'),
     crypto = require('crypto');
+var kurento = require('kurento-client');
 
 module.exports = function (server, config) {
     var io = socketIO.listen(server);

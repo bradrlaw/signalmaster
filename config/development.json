@@ -1,7 +1,7 @@
 {
   "isDev": true,
   "server": {
-    "port": 8888,
+    "port": 9000,
     "/* secure */": "/* whether this connects via https */",
     "secure": false,
     "key": null,
@@ -19,9 +19,14 @@
   ],
   "turnservers": [
     {
-      "urls": ["turn:your.turn.servers.here"],
-      "secret": "turnserversharedsecret",
+      "urls": [ "turn:mediaserver.butterflymx.com" ],
+      "/* secret */": "turnserversharedsecret",
       "expiry": 86400
+    }
+  ],
+  "kurento": [
+    {
+      "ws_uri": "ws://localhost:8888/kurento"
     }
   ]
 }

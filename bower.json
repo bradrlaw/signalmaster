@@ -1,0 +1,23 @@
+{
+  "name": "kurento-ss-client",
+  "description": "Kurento Signal Server Test",
+  "authors": [
+    "ButterflyMX"
+  ],
+  "main": "index.html",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "ALv2",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "adapter.js": "v0.2.9",
+    "kurento-utils": "master"
+  }
+}
