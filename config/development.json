@@ -3,9 +3,10 @@
   "server": {
     "port": 9000,
     "/* secure */": "/* whether this connects via https */",
-    "secure": false,
-    "key": null,
-    "cert": null,
+    "secure": true,
+    "key": "keys/server.key",
+    "cert": "keys/server.crt",
+    "ca": "keys/server.csr",
     "password": null
   },
   "rooms": {
@@ -24,9 +25,8 @@
       "expiry": 86400
     }
   ],
-  "kurento": [
-    {
-      "ws_uri": "ws://localhost:8888/kurento"
+  "kurento": {
+      "/* ws_uri */": "ws://localhost:8888/kurento",
+      "ws_uri": "ws://mediaserver.butterflymx.com:8888/kurento"
     }
-  ]
 }

@@ -4,8 +4,9 @@
     "port": 9000,
     "/* secure */": "/* whether this connects via https */",
     "secure": true,
-    "key": "keys/server.key",
-    "cert": "keys/server.crt",
+    "key": "keys/privkey.pem",
+    "cert": "keys/fullchain.pem",
+    "ca":  "keys/chain.pem",
     "password": null
   },
   "rooms": {
@@ -24,9 +25,7 @@
       "expiry": 86400
     }
   ],
-  "kurento": [
-    {
-      "ws_uri":  "ws://localhost:8888/kurento"
+  "kurento": {
+      "ws_uri": "ws://localhost:8888/kurento"
     }
-  ]
 }

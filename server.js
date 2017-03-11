@@ -15,6 +15,7 @@ if (config.server.secure) {
     server = require('https').Server({
         key: fs.readFileSync(config.server.key),
         cert: fs.readFileSync(config.server.cert),
+        ca: fs.readFileSync(config.server.ca),
         passphrase: config.server.password
     }, server_handler);
 } else {
